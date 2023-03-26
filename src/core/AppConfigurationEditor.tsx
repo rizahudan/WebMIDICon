@@ -4,6 +4,7 @@ import { ConfigurationProperty } from '../configuration'
 import AppConfigurationContext from './AppConfigurationContext'
 import { InlineMarkdown } from './Markdown'
 import { useConfiguration } from './AppConfigurationHooks'
+import { GetDrumButtonMapping, GetAllDrumpadButtonMapping } from '../drum-pad/DrumButtonMapping'
 
 export function AppConfigurationEditor() {
   const context = useContext(AppConfigurationContext)
@@ -53,6 +54,17 @@ export function AppConfigurationEditor() {
           </section>
         )
       })}
+      <section key={'section-config-drumpad-mapping'} className={tw`mb-8`}>
+        <h2 className={tw`text-2xl pt-2 px-2 text-#d7fc70`}>
+          Drumpad Mapping
+        </h2>
+        <div className={tw`p-2 leading-normal`} key={'config-drumpad-mapping'}>
+          <h3 className={tw`font-bold`}>
+            <ConfigurationPropertyTitle propertyName={'drumPad.keymap'} />
+          </h3>
+          <ConfigDrumpadMapping />
+        </div>
+      </section>
     </div>
   )
 }
@@ -80,6 +92,52 @@ function ConfigurationPropertyTitle({
         })}
     </span>
   )
+}
+
+function ConfigDrumpadMapping(): JSX.Element {
+  const { value, overridden, setValue, resetValue } = useConfiguration('drumPad.buttonOverride')
+  const reset = (
+    <span className={tw`ml-2 text-#8b8685`}>
+      (default:{' '}
+      <button
+        className={tw`underline`}
+        title="Click to reset to default value"
+        onClick={resetValue}
+      >
+        Reset
+      </button>
+      )
+    </span>
+  )
+  const onChange = (index: number, val: any) => {
+    map[index] = `${index}=${val}`
+    setValue(map.join(''))
+  }
+
+  const map: any = []
+  const res: any = []
+  let tmpChild: any = []
+  GetDrumButtonMapping().forEach((current, index) => {
+    map[index+1] = `${current.note}-${current.name};`
+    tmpChild.push(
+      <select
+        className={tw`p-1 bg-#090807 border border-#656463`}
+        onChange={(e) => onChange(index + 1, e.target.value)}
+        value={(`${current.note},${current.name};`) as unknown as string}
+      >
+        {GetAllDrumpadButtonMapping().map((btn) => (
+          <option key={btn.note} value={`${btn.note},${btn.name};`}>
+            {btn.name}
+          </option>
+        ))}
+      </select>
+    )
+    if ((index+1)%4 === 0) {
+      res.push(<p>{tmpChild}</p>)
+      tmpChild = []
+    }
+  })
+  return <>{[reset, res]}</>
 }
 
 function ConfigurationPropertyEditor(props: {
