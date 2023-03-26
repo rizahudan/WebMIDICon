@@ -133,7 +133,7 @@ function ConfigDrumpadMapping(): JSX.Element {
       </select>
     )
     if ((index+1)%4 === 0) {
-      res.push(<p>{tmpChild}</p>)
+      res.push(<><p>{tmpChild}</p><br /></>)
       tmpChild = []
     }
   })
