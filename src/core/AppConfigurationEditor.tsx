@@ -121,6 +121,7 @@ function ConfigDrumpadMapping(): JSX.Element {
     map[index+1] = `${index+1}=${current.note},${current.name};`
     tmpChild.push(
       <select
+        style={{ marginRight: '5px' }}
         className={tw`p-1 bg-#090807 border border-#656463`}
         onChange={(e) => onChange(index + 1, e.target.value)}
         value={(`${current.note},${current.name};`) as unknown as string}
@@ -137,7 +138,7 @@ function ConfigDrumpadMapping(): JSX.Element {
       tmpChild = []
     }
   })
-  return <>{[reset, res]}</>
+  return <div style={{ overflowX: 'scroll', whiteSpace: 'nowrap' }}>{[reset, res]}</div>
 }
 
 function ConfigurationPropertyEditor(props: {
