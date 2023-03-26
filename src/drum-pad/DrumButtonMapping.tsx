@@ -35,6 +35,7 @@ interface DrumButtonMapping {
 
 export function GetAllDrumpadButtonMapping() {
   const notes = [
+    { name: 'Select Notes', note: 0 },
     { name: 'Acoustic Bass Drum', note: 35 },
     { name: 'Kick', note: 36 },
     { name: 'Sidestick', note: 37 },
@@ -50,7 +51,7 @@ export function GetAllDrumpadButtonMapping() {
     { name: 'Open Hi-Hat', note: 46 },
     { name: 'Low-Mid Tom', note: 47 },
     { name: 'Hi-Mid Tom', note: 48 },
-    { name: 'Crash Cymbal 1', note: 49 },
+    { name: 'Crash Cymbal 2', note: 49 },
     { name: 'High Tom', note: 50 },
 
     { name: 'Ride Cymbal 1', note: 51 },
@@ -59,7 +60,7 @@ export function GetAllDrumpadButtonMapping() {
     { name: 'Tambourine', note: 54 },
     { name: 'Splash Cymbal', note: 55 },
     { name: 'Cowbell', note: 56 },
-    { name: 'Crash Cymbal 2', note: 57 },
+    { name: 'Crash Cymbal 1', note: 57 },
     { name: 'Vibraslap', note: 58 },
     { name: 'Ride Cymbal 2', note: 59 },
     { name: 'Hi Bongo', note: 60 },
