@@ -118,7 +118,7 @@ function ConfigDrumpadMapping(): JSX.Element {
   const res: any = []
   let tmpChild: any = []
   GetDrumButtonMapping().forEach((current, index) => {
-    map[index+1] = `${current.note}-${current.name};`
+    map[index+1] = `${index+1}=${current.note},${current.name};`
     tmpChild.push(
       <select
         className={tw`p-1 bg-#090807 border border-#656463`}

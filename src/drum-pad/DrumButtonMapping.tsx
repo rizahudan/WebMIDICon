@@ -34,7 +34,7 @@ interface DrumButtonMapping {
 }
 
 export function GetAllDrumpadButtonMapping() {
-  return [
+  const notes = [
     { name: 'Acoustic Bass Drum', note: 35 },
     { name: 'Kick', note: 36 },
     { name: 'Sidestick', note: 37 },
@@ -88,6 +88,7 @@ export function GetAllDrumpadButtonMapping() {
 
     { name: 'Open Triangle', note: 81 },
   ]
+  return notes.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
 }
 
 export function GetDrumButtonMapping() {
