@@ -61,7 +61,7 @@ export function GetAllDrumpadButtonMapping() {
     { name: 'Cowbell', note: 56 },
     { name: 'Crash Cymbal 1', note: 57 },
     { name: 'Vibraslap', note: 58 },
-    { name: 'Ride Cymbal 2', note: 59 },
+    { name: 'Ride In', note: 59 },
     { name: 'Hi Bongo', note: 60 },
     
     { name: 'Low Bongo', note: 61 },
