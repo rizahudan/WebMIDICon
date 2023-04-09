@@ -9,6 +9,7 @@ import { tw } from 'twind'
 import AppStoreProvider, { useAppStore } from './AppStoreProvider'
 import { AppSettingsPopover } from './AppSettingsPopover'
 import { PWAUpdateConnector } from './PWAUpdate'
+import FullscreenBtn from './FullscreenBtn'
 
 export function App({ features }: { features: Feature[] }) {
   return (
@@ -36,7 +37,10 @@ export function App({ features }: { features: Feature[] }) {
                 </PWAUpdateConnector>
               </h1>
               <aside className={tw`absolute inset-y-0 right-2 flex`}>
-                <AppSettingsPopover />
+                <>
+                  <FullscreenBtn />
+                  <AppSettingsPopover />
+                </>
               </aside>
             </header>
             <section className={tw`absolute top-[40px] inset-x-0 bottom-0`}>

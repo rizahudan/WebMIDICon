@@ -29,10 +29,6 @@ function AppSettingsPopoverContents(props: { onClose: () => void }) {
     history.push('/config')
     props.onClose()
   }
-  const goToDrumpadMapping = () => {
-    history.push('/config-drumpad-mapping')
-    props.onClose()
-  }
   return (
     <>
       <div className={tw`text-#8b8685`}>MIDI output port</div>
