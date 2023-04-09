@@ -103,7 +103,7 @@ const DrumButton = class DrumButton extends React.PureComponent {
               transform: 'translateZ(0)',
             }}
           >
-            <div style={{ fontSize: '3vw' }}>{name}</div>
+            <div style={{ fontSize: '3vw', textAlign: 'center' }}>{name}</div>
           </div>
         </div>
       </TouchAbsorber>
