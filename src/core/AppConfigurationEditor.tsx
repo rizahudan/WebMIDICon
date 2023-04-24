@@ -138,7 +138,7 @@ function ConfigDrumpadMapping(): JSX.Element {
       //     </option>
       //   ))}
       // </select>
-      <div style={{color: 'black'}}>
+      <div style={{color: 'black', width: '100%'}}>
         <Select
           className={tw`p-1 bg-#090807 border border-#656463`}
           onChange={selectHandleChange}
@@ -158,7 +158,7 @@ function ConfigDrumpadMapping(): JSX.Element {
     //   tmpChild = []
     // }
   })
-  res.push(<div className={tw`grid grid-cols-4 gap-4`}>{tmpChild}</div>)
+  res.push(<div className={tw`grid grid-cols-4 gap-4`} style={{ width: 'max-content' }}>{tmpChild}</div>)
   return <div style={{ overflowX: 'scroll', whiteSpace: 'nowrap' }}>{[reset, res]}</div>
 }
 
