@@ -139,6 +139,6 @@ const DrumButton = class DrumButton extends React.PureComponent {
       if (touchId !== this.touchId) return
       if (!this.activeElement) return
       this.activeElement.style.opacity = '0'
-    }, 50)
+    }, 0)
   }
 }
