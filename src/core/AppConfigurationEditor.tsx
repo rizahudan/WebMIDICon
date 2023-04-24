@@ -5,6 +5,7 @@ import AppConfigurationContext from './AppConfigurationContext'
 import { InlineMarkdown } from './Markdown'
 import { useConfiguration } from './AppConfigurationHooks'
 import { GetDrumButtonMapping, GetAllDrumpadButtonMapping } from '../drum-pad/DrumButtonMapping'
+import Select from 'react-select'
 
 export function AppConfigurationEditor() {
   const context = useContext(AppConfigurationContext)
@@ -114,30 +115,50 @@ function ConfigDrumpadMapping(): JSX.Element {
     setValue(map.join(''))
   }
 
+  const selectHandleChange = (selectedOption: any) => {
+    console.log('selectedOption: ', selectedOption)
+    onChange(selectedOption.index + 1, selectedOption.value)
+  };
+
   const map: any = []
   const res: any = []
   let tmpChild: any = []
   GetDrumButtonMapping().forEach((current, index) => {
     map[index+1] = `${index+1}=${current.note},${current.name};`
     tmpChild.push(
-      <select
-        style={{ marginRight: '5px' }}
-        className={tw`p-1 bg-#090807 border border-#656463`}
-        onChange={(e) => onChange(index + 1, e.target.value)}
-        value={(`${current.note},${current.name};`) as unknown as string}
-      >
-        {GetAllDrumpadButtonMapping().map((btn) => (
-          <option key={btn.note} value={`${btn.note},${btn.name};`}>
-            {btn.name}
-          </option>
-        ))}
-      </select>
+      // <select
+      //   style={{ marginRight: '5px' }}
+      //   className={tw`p-1 bg-#090807 border border-#656463`}
+      //   onChange={(e) => onChange(index + 1, e.target.value)}
+      //   value={(`${current.note},${current.name};`) as unknown as string}
+      // >
+      //   {GetAllDrumpadButtonMapping().map((btn) => (
+      //     <option key={btn.note} value={`${btn.note},${btn.name};`}>
+      //       {btn.name}
+      //     </option>
+      //   ))}
+      // </select>
+      <div style={{color: 'black'}}>
+        <Select
+          className={tw`p-1 bg-#090807 border border-#656463`}
+          onChange={selectHandleChange}
+          value={{ label: current.name, value: `${current.note},${current.name};`}}
+          options={GetAllDrumpadButtonMapping().map((btn): any => {
+            return {
+              value: `${btn.note},${btn.name};`,
+              label: btn.name,
+              index: index
+            }
+          })}
+        />
+      </div>
     )
-    if ((index+1)%4 === 0) {
-      res.push(<><p>{tmpChild}</p><br /></>)
-      tmpChild = []
-    }
+    // if ((index+1)%4 === 0) {
+    //   res.push(<><p>{tmpChild}</p><br /></>)
+    //   tmpChild = []
+    // }
   })
+  res.push(<div className={tw`grid grid-cols-4 gap-4`}>{tmpChild}</div>)
   return <div style={{ overflowX: 'scroll', whiteSpace: 'nowrap' }}>{[reset, res]}</div>
 }
 

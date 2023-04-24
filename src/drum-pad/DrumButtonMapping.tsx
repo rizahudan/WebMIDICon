@@ -8,7 +8,7 @@ interface ButtonMapping {
 }
 
 const buttons: ButtonMapping[] = [
-  { name: 'Ride Edge', note: 52 },
+  { name: 'Ride Edge / Chinese Cymbal', note: 52 },
   { name: 'Ride Bell', note: 53 },
   { name: 'Crash Cymbal 1', note: 57 },
   { name: 'Crash Cymbal 2', note: 49 },
@@ -54,7 +54,7 @@ export function GetAllDrumpadButtonMapping() {
     { name: 'High Tom', note: 50 },
 
     { name: 'Ride Cymbal 1', note: 51 },
-    { name: 'Ride Edge', note: 52 },
+    { name: 'Ride Edge / Chinese Cymbal', note: 52 },
     { name: 'Ride Bell', note: 53 },
     { name: 'Tambourine', note: 54 },
     { name: 'Splash Cymbal', note: 55 },

@@ -63,7 +63,7 @@ const DrumButton = class DrumButton extends React.PureComponent {
             '-moz-user-select': 'none',
             '-khtml-user-select': 'none',
             '-webkit-user-select': 'none',
-            'user-select': 'none',
+            userSelect: 'none',
           }}
           ref={this.registerTouchElement}
         >
