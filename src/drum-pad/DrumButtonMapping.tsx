@@ -101,7 +101,7 @@ export function GetDrumButtonMapping() {
       (_all, num, noteStr, name) => {
         const index = +num - 1
         const note = +noteStr
-        console.log(index, note, name)
+        // console.log(index, note, name)
         if (index >= 0 && index < result.length && note > 0 && note < 128) {
           result[index] = { name, note }
         }

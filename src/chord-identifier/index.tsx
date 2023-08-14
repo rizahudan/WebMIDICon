@@ -49,7 +49,7 @@ function ChordIdentifier(props: {
     [activeNotes, sharp11]
   )
   useEffect(() => {
-    console.log(chord)
+    // console.log(chord)
   }, [chord])
   return chord ? <StatusBarItem id="chord">{chord}</StatusBarItem> : null
 }

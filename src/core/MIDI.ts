@@ -102,7 +102,7 @@ function refreshOutputList(access: WebMidi.MIDIAccess) {
 }
 
 export function send(data: number[] | Uint8Array) {
-  console.log(data)
+  // console.log(data)
   if (window.midiOutput) {
     window.midiOutput.send(data)
   }
